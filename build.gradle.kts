@@ -19,7 +19,12 @@ plugins {
     id("org.sonarqube") version "3.1"
     id("org.jetbrains.dokka") version "1.4.20"
     idea
+    application
     `maven-publish`
+}
+
+application {
+    mainClass.set("com.reizu.snaphs.api.ApplicationKt")
 }
 
 val repoUsername: String by project

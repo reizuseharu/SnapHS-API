@@ -1,8 +1,10 @@
 package com.reizu.snaphs.api.entity
 
 enum class Region {
-    ANY,
-    NTSC_U,
-    NTSC_J,
-    PAL
+
+    USA_NTSC,
+
+    JPN_NTSC,
+
+    EUR_PAL
 }

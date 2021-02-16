@@ -1,0 +1,41 @@
+logging:
+  level:
+    org.springframework: DEBUG
+    root: INFO
+server:
+  port : 8089
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/snaphs
+    driverClassName: org.postgresql.Driver
+    username: postgres
+    password: postgres
+    data: classpath:test.sql
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    show-sql: false
+    hibernate:
+      ddl-auto: update
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    properties:
+      hibernate:
+        globally_quoted_identifiers: true
+    serialization:
+      write_dates_as_timestamps: false
+  cache:
+    jcache:
+      config: classpath:ehcache.xml
+springdoc:
+  swagger-ui:
+    path: /api.html
+bucket4j:
+  enabled: true
+  filters:
+    - cache-name: buckets
+      url: .*
+      rate-limits:
+        - bandwidths:
+            - capacity: 1
+              time: 1
+              unit: seconds

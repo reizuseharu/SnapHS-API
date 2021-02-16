@@ -1,0 +1,4 @@
+FROM openjdk:8-jdk-alpine
+EXPOSE 8089
+ADD /build/libs/snaphs-api-0.0.1-pre-alpha.jar snapHS.jar
+ENTRYPOINT ["java", "-jar", "snapHS.jar"]

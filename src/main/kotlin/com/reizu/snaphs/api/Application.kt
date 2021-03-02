@@ -22,8 +22,8 @@ import org.springframework.scheduling.annotation.EnableAsync
 )
 @EnableAsync
 @EnableCaching
-@SpringBootApplication
 @ComponentScan("com.reizu.snaphs.api.repository")
+@SpringBootApplication
 class Application
 
 fun main() {

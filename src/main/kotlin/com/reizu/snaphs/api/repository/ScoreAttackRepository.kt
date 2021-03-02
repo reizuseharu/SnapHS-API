@@ -5,20 +5,35 @@ import com.reizu.snaphs.api.entity.Console
 import com.reizu.snaphs.api.entity.Region
 import com.reizu.snaphs.api.entity.ScoreAttack
 import org.springframework.stereotype.Repository
+import java.util.UUID
 
 @Repository
 interface ScoreAttackRepository : BaseUniqueRepository<ScoreAttack> {
 
-    fun findAllByUserNameAndRemovedOnIsNullOrderByTotalScore(userName: String): List<ScoreAttack>
+    fun findAllByUserNameAndVerifiedIsTrueAndRemovedOnIsNullOrderByTotalScoreDesc(userName: String): List<ScoreAttack>
 
-    fun findAllByChallengeNameAndRemovedOnIsNullOrderByTotalScore(challengeName: String): List<ScoreAttack>
+    fun findAllByChallengeNameAndVerifiedIsTrueAndRemovedOnIsNullOrderByTotalScoreDesc(challengeName: String): List<ScoreAttack>
 
-    fun findAllByChallengePokemonNameAndRemovedOnIsNullOrderByTotalScore(pokemonName: String): List<ScoreAttack>
+    fun findAllByChallengePokemonNameAndVerifiedIsTrueAndRemovedOnIsNullOrderByTotalScoreDesc(pokemonName: String): List<ScoreAttack>
 
-    fun findAllByConsoleAndRemovedOnIsNullOrderByTotalScore(console: Console): List<ScoreAttack>
+    fun findAllByConsoleAndVerifiedIsTrueAndRemovedOnIsNullOrderByTotalScoreDesc(console: Console): List<ScoreAttack>
 
-    fun findAllByRegionAndRemovedOnIsNullOrderByTotalScore(region: Region): List<ScoreAttack>
+    fun findAllByRegionAndVerifiedIsTrueAndRemovedOnIsNullOrderByTotalScoreDesc(region: Region): List<ScoreAttack>
 
-    fun findAllByRemovedOnIsNullOrderByTotalScore(): List<ScoreAttack>
+    fun findAllByVerifiedIsTrueAndRemovedOnIsNullOrderByTotalScoreDesc(): List<ScoreAttack>
+
+    fun findByIdAndRemovedOnIsNull(id: UUID): ScoreAttack
+
+    fun findAllByUserNameAndRemovedOnIsNullOrderByTotalScoreDesc(userName: String): List<ScoreAttack>
+
+    fun findAllByChallengeNameAndRemovedOnIsNullOrderByTotalScoreDesc(challengeName: String): List<ScoreAttack>
+
+    fun findAllByChallengePokemonNameAndRemovedOnIsNullOrderByTotalScoreDesc(pokemonName: String): List<ScoreAttack>
+
+    fun findAllByConsoleAndRemovedOnIsNullOrderByTotalScoreDesc(console: Console): List<ScoreAttack>
+
+    fun findAllByRegionAndRemovedOnIsNullOrderByTotalScoreDesc(region: Region): List<ScoreAttack>
+
+    fun findAllByRemovedOnIsNullOrderByTotalScoreDesc(): List<ScoreAttack>
 
 }

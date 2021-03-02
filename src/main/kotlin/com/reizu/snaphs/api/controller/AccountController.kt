@@ -1,5 +1,6 @@
 package com.reizu.snaphs.api.controller
 
+import com.reizu.snaphs.api.entity.Role
 import com.reizu.snaphs.api.dto.input.Account as AccountInput
 import com.reizu.snaphs.api.dto.output.Account as AccountOutput
 import com.reizu.snaphs.api.service.AccountService
@@ -41,6 +42,14 @@ class AccountController {
         country: String
     ): Iterable<AccountOutput> {
         return accountService.findAllByUserCountry(country)
+    }
+
+    @GetMapping(path = ["/role/{role}"], produces = [MediaType.APPLICATION_JSON_VALUE])
+    fun findAllByRole(
+        @PathVariable("role")
+        role: Role
+    ): Iterable<AccountOutput> {
+        return accountService.findAllByRole(role)
     }
 
 }

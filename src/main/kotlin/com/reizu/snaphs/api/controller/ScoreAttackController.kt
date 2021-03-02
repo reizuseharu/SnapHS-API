@@ -4,6 +4,7 @@ import com.reizu.snaphs.api.entity.Console
 import com.reizu.snaphs.api.entity.Region
 import com.reizu.snaphs.api.dto.input.ScoreAttack as ScoreAttackInput
 import com.reizu.snaphs.api.dto.output.ScoreAttack as ScoreAttackOutput
+import com.reizu.snaphs.api.dto.update.ScoreAttack as ScoreAttackUpdate
 import com.reizu.snaphs.api.service.ScoreAttackService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.MediaType
@@ -72,6 +73,11 @@ class ScoreAttackController {
     @GetMapping(path = ["/ordered"], produces = [MediaType.APPLICATION_JSON_VALUE])
     fun findAllOrdered(): Iterable<ScoreAttackOutput> {
         return scoreAttackService.findAllOrdered()
+    }
+
+    @PutMapping(path = ["/validate"], produces = [MediaType.APPLICATION_JSON_VALUE], consumes = [MediaType.APPLICATION_JSON_VALUE])
+    fun validateScoreAttack(@RequestBody scoreAttackUpdate: ScoreAttackUpdate): ScoreAttackOutput {
+        return scoreAttackService.validateScoreAttack(scoreAttackUpdate.id)
     }
 
 }

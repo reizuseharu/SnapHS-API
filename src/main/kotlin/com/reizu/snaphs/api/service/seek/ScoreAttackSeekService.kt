@@ -7,7 +7,7 @@ import com.reizu.snaphs.api.entity.ScoreAttack
 import com.reizu.snaphs.api.repository.ScoreAttackRepository
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
-import javax.persistence.EntityNotFoundException
+import java.util.UUID
 
 @Service
 class ScoreAttackSeekService : BaseUniqueService<ScoreAttack>(ScoreAttack::class.java) {
@@ -16,27 +16,31 @@ class ScoreAttackSeekService : BaseUniqueService<ScoreAttack>(ScoreAttack::class
     private lateinit var scoreAttackRepository: ScoreAttackRepository
 
     fun findAllByUser(userName: String): List<ScoreAttack> {
-        return scoreAttackRepository.findAllByUserNameAndRemovedOnIsNullOrderByTotalScore(userName)
+        return scoreAttackRepository.findAllByUserNameAndVerifiedIsTrueAndRemovedOnIsNullOrderByTotalScoreDesc(userName)
     }
 
     fun findAllByChallenge(challengeName: String): List<ScoreAttack> {
-        return scoreAttackRepository.findAllByChallengeNameAndRemovedOnIsNullOrderByTotalScore(challengeName)
+        return scoreAttackRepository.findAllByChallengeNameAndVerifiedIsTrueAndRemovedOnIsNullOrderByTotalScoreDesc(challengeName)
     }
 
     fun findAllByPokemon(pokemonName: String): List<ScoreAttack> {
-        return scoreAttackRepository.findAllByChallengePokemonNameAndRemovedOnIsNullOrderByTotalScore(pokemonName)
+        return scoreAttackRepository.findAllByChallengePokemonNameAndVerifiedIsTrueAndRemovedOnIsNullOrderByTotalScoreDesc(pokemonName)
     }
 
     fun findAllByConsole(console: Console): List<ScoreAttack> {
-        return scoreAttackRepository.findAllByConsoleAndRemovedOnIsNullOrderByTotalScore(console)
+        return scoreAttackRepository.findAllByConsoleAndVerifiedIsTrueAndRemovedOnIsNullOrderByTotalScoreDesc(console)
     }
 
     fun findAllByRegion(region: Region): List<ScoreAttack> {
-        return scoreAttackRepository.findAllByRegionAndRemovedOnIsNullOrderByTotalScore(region)
+        return scoreAttackRepository.findAllByRegionAndVerifiedIsTrueAndRemovedOnIsNullOrderByTotalScoreDesc(region)
     }
 
     fun findAllOrdered(): List<ScoreAttack> {
-        return scoreAttackRepository.findAllByRemovedOnIsNullOrderByTotalScore()
+        return scoreAttackRepository.findAllByVerifiedIsTrueAndRemovedOnIsNullOrderByTotalScoreDesc()
+    }
+
+    fun findById(id: UUID): ScoreAttack {
+        return scoreAttackRepository.findByIdAndRemovedOnIsNull(id)
     }
 
 }

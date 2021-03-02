@@ -1,6 +1,7 @@
 package com.reizu.snaphs.api.service
 
 import com.reizu.snaphs.api.entity.Account
+import com.reizu.snaphs.api.entity.Role
 import com.reizu.snaphs.api.entity.User
 import com.reizu.snaphs.api.service.seek.AccountSeekService
 import com.reizu.snaphs.api.service.seek.UserSeekService
@@ -24,7 +25,8 @@ class AccountService {
 
             val account = Account(
                 user = user,
-                linkedAccount = linkedAccount
+                linkedAccount = linkedAccount,
+                role = role
             )
             val createdAccount: Account = accountSeekService.create(account)
 
@@ -42,6 +44,11 @@ class AccountService {
 
     fun findAllByUserCountry(country: String): Iterable<AccountOutput> {
         return accountSeekService.findAllByCountry(country)
+            .map { account -> account.output}
+    }
+
+    fun findAllByRole(role: Role): Iterable<AccountOutput> {
+        return accountSeekService.findAllByRole(role)
             .map { account -> account.output}
     }
 

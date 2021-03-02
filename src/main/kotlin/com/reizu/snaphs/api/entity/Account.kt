@@ -15,7 +15,11 @@ data class Account(
     val user: User,
 
     @Column(name = "linkedAccount", nullable = true)
-    val linkedAccount: String? = null
+    val linkedAccount: String? = null,
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "role", nullable = false)
+    val role: Role
 
 ) : BaseUniqueEntity() {
 
@@ -23,7 +27,8 @@ data class Account(
         get() {
             return AccountOutput(
                 userName = user.name,
-                linkedAccount = linkedAccount
+                linkedAccount = linkedAccount,
+                role = role
             )
         }
 

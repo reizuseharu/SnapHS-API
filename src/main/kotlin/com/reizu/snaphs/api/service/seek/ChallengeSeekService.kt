@@ -6,8 +6,6 @@ import com.reizu.snaphs.api.entity.Stage
 import com.reizu.snaphs.api.repository.ChallengeRepository
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.data.domain.Pageable
-import org.springframework.security.access.prepost.PostFilter
-import org.springframework.security.access.prepost.PreAuthorize
 import org.springframework.stereotype.Service
 import javax.persistence.EntityNotFoundException
 
@@ -17,8 +15,6 @@ class ChallengeSeekService : BaseUniqueService<Challenge>(Challenge::class.java)
     @Autowired
     private lateinit var challengeRepository: ChallengeRepository
 
-    @PreAuthorize("hasRole('ADMIN')")
-    @PostFilter("filterObject.relatedRunners.contains(authentication.name)")
     override fun findAllActive(page: Pageable?, search: String?): Iterable<Challenge> {
         return super.findAllActive(page, search)
     }

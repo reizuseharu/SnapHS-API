@@ -13,6 +13,7 @@ import com.reizu.snaphs.api.dto.input.ScoreAttack as ScoreAttackInput
 import com.reizu.snaphs.api.dto.output.ScoreAttack as ScoreAttackOutput
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
+import java.util.UUID
 
 @Service
 class ScoreAttackService {
@@ -90,6 +91,45 @@ class ScoreAttackService {
     fun findAllOrdered(): Iterable<ScoreAttackOutput> {
         return scoreAttackSeekService.findAllOrdered()
             .map { scoreAttack -> scoreAttack.output}
+    }
+
+    fun findAllScoreOrdered(): Iterable<ScoreAttackOutput> {
+        return scoreAttackSeekService.findAllOrdered()
+            .groupBy { scoreAttack -> Pair(scoreAttack.user.name, scoreAttack.challenge.name) }
+            .map { (_, scoreAttacks) -> scoreAttacks.first().output }
+    }
+
+    fun findAllScoreByPokemon(pokemonName: String): Iterable<ScoreAttackOutput> {
+        return scoreAttackSeekService.findAllByPokemon(pokemonName)
+            .groupBy { scoreAttack -> Pair(scoreAttack.user.name, scoreAttack.challenge.name) }
+            .map { (_, scoreAttacks) -> scoreAttacks.first().output }
+    }
+
+    fun findAllScoreByChallenge(challengeName: String): Iterable<ScoreAttackOutput> {
+        return scoreAttackSeekService.findAllByChallenge(challengeName)
+            .groupBy { scoreAttack -> Pair(scoreAttack.user.name, scoreAttack.challenge.name) }
+            .map { (_, scoreAttacks) -> scoreAttacks.first().output }
+    }
+
+    fun findAllScoreByConsole(console: Console): Iterable<ScoreAttackOutput> {
+        return scoreAttackSeekService.findAllByConsole(console)
+            .groupBy { scoreAttack -> Pair(scoreAttack.user.name, scoreAttack.challenge.name) }
+            .map { (_, scoreAttacks) -> scoreAttacks.first().output }
+    }
+
+    fun findAllScoreByRegion(region: Region): Iterable<ScoreAttackOutput> {
+        return scoreAttackSeekService.findAllByRegion(region)
+            .groupBy { scoreAttack -> Pair(scoreAttack.user.name, scoreAttack.challenge.name) }
+            .map { (_, scoreAttacks) -> scoreAttacks.first().output }
+    }
+
+    fun validateScoreAttack(id: UUID): ScoreAttackOutput {
+        val scoreAttack: ScoreAttack = scoreAttackSeekService.findById(id)
+        val modifiedScoreAttack = scoreAttack.copy(isVerified = true)
+
+        scoreAttackSeekService.create(modifiedScoreAttack)
+
+        return modifiedScoreAttack.output
     }
 
 }

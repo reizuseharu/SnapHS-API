@@ -87,10 +87,7 @@ val packages: Array<Package> = arrayOf(
     Package("com.google.guava", "guava", "30.1-jre"),
     Package("io.swagger.core.v3", "swagger-jaxrs2", "2.1.6"),
     Package("io.swagger.core.v3", "swagger-jaxrs2-servlet-initializer", "2.1.6"),
-    Package("org.springdoc", "springdoc-openapi-ui", "1.1.43"),
-    Package("org.springframework.security", "spring-security-config", "5.3.8.RELEASE"),
-    Package("org.springframework.security", "spring-security-core", "5.3.8.RELEASE"),
-    Package("org.springframework.security", "spring-security-web", "5.3.8.RELEASE"),
+    Package("org.springdoc", "springdoc-openapi-ui", "1.5.4"),
     Package("com.giffing.bucket4j.spring.boot.starter", "bucket4j-spring-boot-starter", "0.2.0"),
     Package("org.springframework.boot", "spring-boot-starter-cache", springBootVersion),
     Package("org.ehcache", "ehcache", "3.9.0"),
@@ -99,7 +96,6 @@ val packages: Array<Package> = arrayOf(
 
 val testPackages: Array<Package> = arrayOf(
     Package("org.hibernate", "hibernate-testing", "5.4.27.Final"),
-    Package("org.springframework.security", "spring-security-test", "5.3.8.RELEASE"),
     *jUnitPackages,
     *springTestPackages,
     *atomosTestPackages

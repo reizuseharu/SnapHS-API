@@ -12,6 +12,7 @@ apply(from = "gradle/constants.gradle.kts")
 plugins {
     java
     kotlin("jvm") version "1.4.21"
+    kotlin("kapt") version "1.4.21"
     kotlin("plugin.noarg") version "1.4.21"
     kotlin("plugin.allopen") version "1.4.21"
     kotlin("plugin.spring") version "1.4.21"

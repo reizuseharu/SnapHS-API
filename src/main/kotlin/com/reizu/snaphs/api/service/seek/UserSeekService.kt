@@ -5,8 +5,6 @@ import com.reizu.snaphs.api.entity.User
 import com.reizu.snaphs.api.repository.UserRepository
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.data.domain.Pageable
-import org.springframework.security.access.prepost.PostFilter
-import org.springframework.security.access.prepost.PreAuthorize
 import org.springframework.stereotype.Service
 import javax.persistence.EntityNotFoundException
 
@@ -16,8 +14,6 @@ class UserSeekService : BaseUniqueService<User>(User::class.java) {
     @Autowired
     private lateinit var userRepository: UserRepository
 
-    @PreAuthorize("hasRole('ADMIN')")
-    @PostFilter("filterObject.relatedRunners.contains(authentication.name)")
     override fun findAllActive(page: Pageable?, search: String?): Iterable<User> {
         return super.findAllActive(page, search)
     }

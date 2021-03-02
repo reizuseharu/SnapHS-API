@@ -16,6 +16,7 @@ plugins {
     kotlin("plugin.noarg") version "1.4.21"
     kotlin("plugin.allopen") version "1.4.21"
     kotlin("plugin.spring") version "1.4.21"
+    kotlin("plugin.jpa") version "1.4.21"
     id("io.spring.dependency-management") version "1.0.11.RELEASE"
     id("org.sonarqube") version "3.1"
     id("org.jetbrains.dokka") version "1.4.20"

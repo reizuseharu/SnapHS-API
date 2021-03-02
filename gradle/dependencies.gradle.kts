@@ -37,10 +37,7 @@ val jacksonPackages: Array<Package> = arrayOf(
 )
 
 val springPackages: Array<Package> = arrayOf(
-    Package("org.springframework.data", "spring-data-jpa", springDataVersion),
     Package("org.springframework", "spring-orm", springVersion),
-    Package("org.springframework", "spring-web", springVersion),
-    Package("org.springframework", "spring-webmvc", springVersion),
     Package("org.springframework", "spring-context", springVersion),
     Package("org.springframework", "spring-context-support", springVersion)
 )
@@ -48,7 +45,11 @@ val springPackages: Array<Package> = arrayOf(
 val springBootPackages: Array<Package> = arrayOf(
     Package("org.springframework.boot", "spring-boot-autoconfigure", springBootVersion),
     Package("org.springframework.boot", "spring-boot", springBootVersion),
+    Package("org.springframework.boot", "spring-boot-starter-actuator", springBootVersion),
+    Package("org.springframework.boot", "spring-boot-starter-data-jpa", springBootVersion),
+    Package("org.springframework.boot", "spring-boot-starter-parent", springBootVersion),
     Package("org.springframework.boot", "spring-boot-starter-tomcat", springBootVersion),
+    Package("org.springframework.boot", "spring-boot-starter-web", springBootVersion),
     Package("org.springframework.boot", "spring-boot-gradle-plugin", springBootVersion)
 )
 

@@ -36,7 +36,7 @@ class ScoreAttackService {
                 special = score.special,
                 size = score.size,
                 pose = score.pose,
-                isTechnique = score.isTechnique,
+                technique = score.isTechnique,
                 samePokemon = score.samePokemon,
             )
 
@@ -50,7 +50,7 @@ class ScoreAttackService {
                 picture = picture,
                 video = video,
                 submittedOn = submittedOn,
-                isVerified = isVerified,
+                verified = isVerified,
                 approvedOn = approvedOn
             )
             val createdScoreAttack: ScoreAttack = scoreAttackSeekService.create(scoreAttack)
@@ -125,7 +125,7 @@ class ScoreAttackService {
 
     fun validateScoreAttack(id: UUID): ScoreAttackOutput {
         val scoreAttack: ScoreAttack = scoreAttackSeekService.findById(id)
-        val modifiedScoreAttack = scoreAttack.copy(isVerified = true)
+        val modifiedScoreAttack = scoreAttack.copy(verified = true)
 
         scoreAttackSeekService.create(modifiedScoreAttack)
 

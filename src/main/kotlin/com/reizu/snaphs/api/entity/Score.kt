@@ -20,7 +20,7 @@ data class Score(
     val pose: Int = 0,
 
     @Column(name = "isTechnique", nullable = false)
-    val isTechnique: Boolean = false,
+    val technique: Boolean = false,
 
     @Column(name = "samePokemon", nullable = false)
     val samePokemon: Int = 0
@@ -33,7 +33,7 @@ data class Score(
                 special = special,
                 size = size,
                 pose = pose,
-                isTechnique = isTechnique,
+                isTechnique = technique,
                 samePokemon = samePokemon
             )
         }
@@ -42,7 +42,7 @@ data class Score(
         get() {
             return (
                 special
-                + ((size + pose) * (if (isTechnique) 2 else 1))
+                + ((size + pose) * (if (technique) 2 else 1))
                 + samePokemon
             )
         }

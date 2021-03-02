@@ -22,7 +22,7 @@ interface ScoreAttackRepository : BaseUniqueRepository<ScoreAttack> {
 
     fun findAllByVerifiedIsTrueAndRemovedOnIsNullOrderByTotalScoreDesc(): List<ScoreAttack>
 
-    fun findByIdAndRemovedOnIsNull(id: UUID): ScoreAttack
+    fun findBy_idAndRemovedOnIsNull(id: UUID): ScoreAttack
 
     fun findAllByUserNameAndRemovedOnIsNullOrderByTotalScoreDesc(userName: String): List<ScoreAttack>
 

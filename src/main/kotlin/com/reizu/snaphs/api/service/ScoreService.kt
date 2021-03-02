@@ -19,7 +19,7 @@ class ScoreService {
                 special = special,
                 size = size,
                 pose = pose,
-                isTechnique = isTechnique,
+                technique = isTechnique,
                 samePokemon = samePokemon
             )
             val createdScore: Score = scoreSeekService.create(score)

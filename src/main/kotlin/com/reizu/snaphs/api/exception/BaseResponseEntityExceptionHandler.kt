@@ -26,11 +26,11 @@ abstract class BaseResponseEntityExceptionHandler : ResponseEntityExceptionHandl
         return handleExceptionInternal(exception, bodyOfResponse, HttpHeaders(), HttpStatus.BAD_REQUEST, request)
     }
 
-    @ExceptionHandler(value = [ ])
-    fun handleForbidden(exception: RuntimeException, request: WebRequest): ResponseEntity<Any> {
-        val bodyOfResponse = "Action not allowed on entity"
-        return handleExceptionInternal(exception, bodyOfResponse, HttpHeaders(), HttpStatus.FORBIDDEN, request)
-    }
+//    @ExceptionHandler(value = [ ])
+//    fun handleForbidden(exception: RuntimeException, request: WebRequest): ResponseEntity<Any> {
+//        val bodyOfResponse = "Action not allowed on entity"
+//        return handleExceptionInternal(exception, bodyOfResponse, HttpHeaders(), HttpStatus.FORBIDDEN, request)
+//    }
 
     @ExceptionHandler(value = [ IllegalArgumentException::class, IllegalStateException::class ])
     fun handleConflict(exception: RuntimeException, request: WebRequest): ResponseEntity<Any> {

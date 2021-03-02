@@ -55,7 +55,7 @@ data class ScoreAttack(
     val submittedOn: LocalDateTime,
 
     @Column(name = "isVerified", nullable = false)
-    val isVerified: Boolean = false,
+    val verified: Boolean = false,
 
     @JsonSerialize(using = LocalDateTimeSerializer::class)
     @JsonDeserialize(using = LocalDateTimeDeserializer::class)
@@ -77,7 +77,7 @@ data class ScoreAttack(
                 picture = picture,
                 video = video,
                 submittedOn = submittedOn,
-                isVerified = isVerified,
+                isVerified = verified,
                 approvedOn = approvedOn
             )
         }

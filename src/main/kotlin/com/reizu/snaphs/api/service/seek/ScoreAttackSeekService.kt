@@ -40,7 +40,7 @@ class ScoreAttackSeekService : BaseUniqueService<ScoreAttack>(ScoreAttack::class
     }
 
     fun findById(id: UUID): ScoreAttack {
-        return scoreAttackRepository.findByIdAndRemovedOnIsNull(id)
+        return scoreAttackRepository.findBy_idAndRemovedOnIsNull(id)
     }
 
 }

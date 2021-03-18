@@ -11,9 +11,12 @@ import com.reizu.snaphs.api.service.seek.ScoreAttackSeekService
 import com.reizu.snaphs.api.service.seek.UserSeekService
 import com.reizu.snaphs.api.dto.input.ScoreAttack as ScoreAttackInput
 import com.reizu.snaphs.api.dto.output.ScoreAttack as ScoreAttackOutput
+import com.reizu.snaphs.api.dto.update.ScoreAttack as ScoreAttackUpdate
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
-import java.util.UUID
+import java.nio.charset.StandardCharsets
+import java.security.MessageDigest
+import java.security.SecureRandom
 
 @Service
 class ScoreAttackService {
@@ -123,13 +126,33 @@ class ScoreAttackService {
             .map { (_, scoreAttacks) -> scoreAttacks.first().output }
     }
 
-    fun validateScoreAttack(id: UUID): ScoreAttackOutput {
-        val scoreAttack: ScoreAttack = scoreAttackSeekService.findById(id)
-        val modifiedScoreAttack = scoreAttack.copy(verified = true)
+    fun validateScoreAttack(scoreAttackUpdate: ScoreAttackUpdate): ScoreAttackOutput {
+        return scoreAttackUpdate.run {
+            validateUser(userName, password)
 
-        scoreAttackSeekService.create(modifiedScoreAttack)
+            val scoreAttack: ScoreAttack = scoreAttackSeekService.findById(id)
+            val modifiedScoreAttack = scoreAttack.copy(verified = true)
 
-        return modifiedScoreAttack.output
+            scoreAttackSeekService.create(modifiedScoreAttack)
+
+            modifiedScoreAttack.output
+        }
+    }
+
+    private fun validateUser(userName: String, password: String) {
+        // Validate User
+        val user: User = userSeekService.findByName(userName)
+        // - Move into Verify Service
+        user.run {
+            val messageDigest = MessageDigest.getInstance("SHA-512")
+            messageDigest.update(user.salt.toByteArray())
+            val inputHashedPassword = messageDigest.digest(password.toByteArray(StandardCharsets.UTF_8))
+            val storedHashedPassword = user.hashedPassword.toByteArray()
+
+            if (!inputHashedPassword.contentEquals(storedHashedPassword)) {
+                throw RuntimeException("Incorrect password")
+            }
+        }
     }
 
 }

@@ -77,7 +77,7 @@ class ScoreAttackController {
 
     @PutMapping(path = ["/validate"], produces = [MediaType.APPLICATION_JSON_VALUE], consumes = [MediaType.APPLICATION_JSON_VALUE])
     fun validateScoreAttack(@RequestBody scoreAttackUpdate: ScoreAttackUpdate): ScoreAttackOutput {
-        return scoreAttackService.validateScoreAttack(scoreAttackUpdate.id)
+        return scoreAttackService.validateScoreAttack(scoreAttackUpdate)
     }
 
 }

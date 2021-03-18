@@ -5,6 +5,12 @@ data class User(
 
     val name: String,
 
-    val country: String
+    val password: String,
+
+    val salt: String,
+
+    val country: String,
+
+    val isAdmin: Boolean = false
 
 )

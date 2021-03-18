@@ -13,8 +13,17 @@ data class User(
     @Column(name = "name", unique = true, nullable = false)
     val name: String,
 
+    @Column(name = "hashedPassword", nullable = false)
+    val hashedPassword: String,
+
+    @Column(name = "salt", nullable = false)
+    val salt: String,
+
     @Column(name = "country", nullable = false)
     val country: String,
+
+    @Column(name = "isAdmin", nullable = false)
+    val admin: Boolean = false,
 
 ) : BaseUniqueEntity() {
 
@@ -22,7 +31,8 @@ data class User(
         get() {
             return UserOutput(
                 name = name,
-                country = country
+                country = country,
+                admin = admin
             )
         }
 

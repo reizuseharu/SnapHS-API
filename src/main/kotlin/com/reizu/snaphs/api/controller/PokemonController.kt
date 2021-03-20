@@ -14,6 +14,7 @@ class PokemonController {
     @Autowired
     private lateinit var pokemonService: PokemonService
 
+    @CrossOrigin
     @PostMapping(produces = [MediaType.APPLICATION_JSON_VALUE], consumes = [MediaType.APPLICATION_JSON_VALUE])
     fun create(@RequestBody pokemonInput: PokemonInput): PokemonOutput {
         return pokemonService.create(pokemonInput)

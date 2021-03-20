@@ -40,12 +40,12 @@ data class ScoreAttack(
     @Column(name = "region", nullable = false)
     val region: Region,
 
-    // - Change to pictureUrl
     @Column(name = "picture", nullable = true)
     val picture: String?,
 
+    // - Add pictureUrl
     // - Change to videoUrl
-    @Column(name = "video", nullable = false)
+    @Column(name = "video", nullable = true)
     val video: String?,
 
     @JsonSerialize(using = LocalDateTimeSerializer::class)

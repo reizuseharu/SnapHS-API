@@ -3,7 +3,6 @@ package com.reizu.snaphs.api.service
 import com.reizu.snaphs.api.entity.Challenge
 import com.reizu.snaphs.api.entity.Console
 import com.reizu.snaphs.api.entity.Region
-import com.reizu.snaphs.api.entity.Score
 import com.reizu.snaphs.api.entity.ScoreAttack
 import com.reizu.snaphs.api.entity.User
 import com.reizu.snaphs.api.service.seek.ChallengeSeekService
@@ -16,7 +15,6 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 import java.nio.charset.StandardCharsets
 import java.security.MessageDigest
-import java.security.SecureRandom
 
 @Service
 class ScoreAttackService {
@@ -35,19 +33,15 @@ class ScoreAttackService {
             val user: User = userSeekService.findByName(userName)
             val challenge: Challenge = challengeSeekService.findByName(challengeName)
 
-            val score = Score(
-                special = score.special,
-                size = score.size,
-                pose = score.pose,
-                technique = score.isTechnique,
-                samePokemon = score.samePokemon,
-            )
-
             val scoreAttack = ScoreAttack(
                 user = user,
                 challenge = challenge,
-                score = score,
-                totalScore = score.totalScore,
+                special = special,
+                size = size,
+                pose = pose,
+                technique = isTechnique,
+                samePokemon = samePokemon,
+                totalScore = totalScore,
                 console = console,
                 region = region,
                 picture = picture,

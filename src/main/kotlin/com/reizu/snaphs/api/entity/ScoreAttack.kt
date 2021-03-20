@@ -25,9 +25,20 @@ data class ScoreAttack(
     @JoinColumn(name = "challengeId", referencedColumnName = "id", nullable = false)
     val challenge: Challenge,
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = [CascadeType.REMOVE])
-    @JoinColumn(name = "scoreId", referencedColumnName = "id", nullable = false)
-    val score: Score,
+    @Column(name = "special", nullable = false)
+    val special: Int = 0,
+
+    @Column(name = "size", nullable = false)
+    val size: Int = 0,
+
+    @Column(name = "pose", nullable = false)
+    val pose: Int = 0,
+
+    @Column(name = "isTechnique", nullable = false)
+    val technique: Boolean = false,
+
+    @Column(name = "samePokemon", nullable = false)
+    val samePokemon: Int = 0,
 
     @Column(name = "totalScore", nullable = false)
     val totalScore: Int,
@@ -70,7 +81,11 @@ data class ScoreAttack(
             return ScoreAttackOutput(
                 userName = user.name,
                 challengeName = challenge.name,
-                score = score.output,
+                special = special,
+                size = size,
+                pose = pose,
+                isTechnique = technique,
+                samePokemon = samePokemon,
                 totalScore = totalScore,
                 console = console,
                 region = region,
@@ -79,6 +94,15 @@ data class ScoreAttack(
                 submittedOn = submittedOn,
                 isVerified = verified,
                 approvedOn = approvedOn
+            )
+        }
+
+    val calculatedTotalScore: Int
+        get() {
+            return (
+                special
+                + ((size + pose) * (if (technique) 2 else 1))
+                + samePokemon
             )
         }
 

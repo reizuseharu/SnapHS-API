@@ -12,7 +12,15 @@ data class ScoreAttack(
 
     val challengeName: String,
 
-    val score: Score,
+    val special: Int,
+
+    val size: Int,
+
+    val pose: Int,
+
+    val isTechnique: Boolean,
+
+    val samePokemon: Int,
 
     val totalScore: Int,
 

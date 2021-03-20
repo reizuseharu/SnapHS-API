@@ -10,8 +10,8 @@ enum class Console(name: String, isEmulated: Boolean) {
 
     WII_VC_EMULATED("WiiVC", true),
 
-    WII_U_VC("WiiUVC", false),
+    WIIU_VC("WiiUVC", false),
 
-    WII_U_VC_EMULATED("WiiUVC", true)
+    WIIU_VC_EMULATED("WiiUVC", true)
 
 }

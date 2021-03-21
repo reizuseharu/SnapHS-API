@@ -71,13 +71,23 @@ class ScoreAttackController {
     }
 
     @GetMapping(path = ["/challenge/{challengeName}/console/{console}"], produces = [MediaType.APPLICATION_JSON_VALUE])
-    fun findAllByChallengeAndConsole(
+    fun findAllByChallengeAndConsoleVerified(
         @PathVariable("challengeName")
         challengeName: String,
         @PathVariable("console")
         console: Console
     ): Iterable<ScoreAttackOutput> {
-        return scoreAttackService.findAllByChallengeAndConsole(challengeName, console)
+        return scoreAttackService.findAllByChallengeAndConsoleVerified(challengeName, console)
+    }
+
+    @GetMapping(path = ["/challenge/{challengeName}/console/{console}/notVerified"], produces = [MediaType.APPLICATION_JSON_VALUE])
+    fun findAllByChallengeAndConsoleNotVerified(
+        @PathVariable("challengeName")
+        challengeName: String,
+        @PathVariable("console")
+        console: Console
+    ): Iterable<ScoreAttackOutput> {
+        return scoreAttackService.findAllByChallengeAndConsoleNotVerified(challengeName, console)
     }
 
     @GetMapping(path = ["/ordered"], produces = [MediaType.APPLICATION_JSON_VALUE])

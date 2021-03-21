@@ -120,8 +120,14 @@ class ScoreAttackService {
             .map { (_, scoreAttacks) -> scoreAttacks.first().output }
     }
 
-    fun findAllByChallengeAndConsole(challengeName: String, console: Console): Iterable<ScoreAttackOutput> {
-        return scoreAttackSeekService.findAllByChallengeAndConsole(challengeName, console)
+    fun findAllByChallengeAndConsoleVerified(challengeName: String, console: Console): Iterable<ScoreAttackOutput> {
+        return scoreAttackSeekService.findAllByChallengeAndConsoleVerified(challengeName, console)
+            .groupBy { scoreAttack -> Pair(scoreAttack.user.name, scoreAttack.challenge.name) }
+            .map { (_, scoreAttacks) -> scoreAttacks.first().output }
+    }
+
+    fun findAllByChallengeAndConsoleNotVerified(challengeName: String, console: Console): Iterable<ScoreAttackOutput> {
+        return scoreAttackSeekService.findAllByChallengeAndConsoleNotVerified(challengeName, console)
             .groupBy { scoreAttack -> Pair(scoreAttack.user.name, scoreAttack.challenge.name) }
             .map { (_, scoreAttacks) -> scoreAttacks.first().output }
     }

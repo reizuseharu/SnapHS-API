@@ -21,4 +21,6 @@ Pokémon Snap High Score API
 
 ## Launch Locally
 
-`./ngrok http -region=us -hostname=hs-pkmnsnap.ngrok.io 8089`
+```bash
+./ngrok http -region=us -hostname=hs-pkmnsnap.ngrok.io 8089 > /dev/null & 
+```

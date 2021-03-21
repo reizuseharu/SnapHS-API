@@ -70,6 +70,16 @@ class ScoreAttackController {
         return scoreAttackService.findAllByRegion(region)
     }
 
+    @GetMapping(path = ["/challenge/{challengeName}/console/{console}"], produces = [MediaType.APPLICATION_JSON_VALUE])
+    fun findAllByChallengeAndConsole(
+        @PathVariable("challengeName")
+        challengeName: String,
+        @PathVariable("console")
+        console: Console
+    ): Iterable<ScoreAttackOutput> {
+        return scoreAttackService.findAllByChallengeAndConsole(challengeName, console)
+    }
+
     @GetMapping(path = ["/ordered"], produces = [MediaType.APPLICATION_JSON_VALUE])
     fun findAllOrdered(): Iterable<ScoreAttackOutput> {
         return scoreAttackService.findAllOrdered()

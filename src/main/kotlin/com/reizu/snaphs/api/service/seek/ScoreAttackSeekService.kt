@@ -35,6 +35,10 @@ class ScoreAttackSeekService : BaseUniqueService<ScoreAttack>(ScoreAttack::class
         return scoreAttackRepository.findAllByRegionAndVerifiedIsTrueAndRemovedOnIsNullOrderByTotalScoreDesc(region)
     }
 
+    fun findAllByChallengeAndConsole(challengeName: String, console: Console): List<ScoreAttack> {
+        return scoreAttackRepository.findAllByChallengeNameAndConsoleAndVerifiedIsTrueAndRemovedOnIsNullOrderByTotalScoreDesc(challengeName, console)
+    }
+
     fun findAllOrdered(): List<ScoreAttack> {
         return scoreAttackRepository.findAllByVerifiedIsTrueAndRemovedOnIsNullOrderByTotalScoreDesc()
     }

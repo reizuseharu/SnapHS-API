@@ -18,3 +18,7 @@ Pokémon Snap High Score API
 - Run `docker-compose up -d` to kick off database
 - Build with Gradle by running `gradle clean build`
 - Run Spring App using IDE or `java -jar build/libs/snaphs-api-0.0.1-pre-alpha.jar`
+
+## Launch Locally
+
+`./ngrok http -region=us -hostname=hs-pkmnsnap.ngrok.io 8089`

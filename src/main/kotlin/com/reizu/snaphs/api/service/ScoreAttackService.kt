@@ -120,6 +120,12 @@ class ScoreAttackService {
             .map { (_, scoreAttacks) -> scoreAttacks.first().output }
     }
 
+    fun findAllByChallengeAndConsole(challengeName: String, console: Console): Iterable<ScoreAttackOutput> {
+        return scoreAttackSeekService.findAllByChallengeAndConsole(challengeName, console)
+            .groupBy { scoreAttack -> Pair(scoreAttack.user.name, scoreAttack.challenge.name) }
+            .map { (_, scoreAttacks) -> scoreAttacks.first().output }
+    }
+
     fun validateScoreAttack(scoreAttackUpdate: ScoreAttackUpdate): ScoreAttackOutput {
         return scoreAttackUpdate.run {
             validateUser(userName, password)

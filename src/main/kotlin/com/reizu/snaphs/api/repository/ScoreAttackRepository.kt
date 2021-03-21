@@ -24,9 +24,9 @@ interface ScoreAttackRepository : BaseUniqueRepository<ScoreAttack> {
 
     fun findBy_idAndRemovedOnIsNull(id: UUID): ScoreAttack
 
-    fun findAllByChallengeNameAndConsoleAndVerifiedIsTrueAndChallengeStageIsNotNullAndRemovedOnIsNullOrderByTotalScoreDesc(challengeName: String, console: Console): List<ScoreAttack>
+    fun findAllByChallengeNameAndConsoleAndVerifiedIsTrueAndRemovedOnIsNullOrderByTotalScoreDesc(challengeName: String, console: Console): List<ScoreAttack>
 
-    fun findAllByChallengeNameAndConsoleAndVerifiedIsFalseAndChallengeStageIsNotNullAndRemovedOnIsNullOrderByTotalScoreDesc(challengeName: String, console: Console): List<ScoreAttack>
+    fun findAllByChallengeNameAndConsoleAndVerifiedIsFalseAndRemovedOnIsNullOrderByTotalScoreDesc(challengeName: String, console: Console): List<ScoreAttack>
 
     fun findAllByUserNameAndRemovedOnIsNullOrderByTotalScoreDesc(userName: String): List<ScoreAttack>
 

@@ -36,11 +36,11 @@ class ScoreAttackSeekService : BaseUniqueService<ScoreAttack>(ScoreAttack::class
     }
 
     fun findAllByChallengeAndConsoleVerified(challengeName: String, console: Console): List<ScoreAttack> {
-        return scoreAttackRepository.findAllByChallengeNameAndConsoleAndVerifiedIsTrueAndChallengeStageIsNotNullAndRemovedOnIsNullOrderByTotalScoreDesc(challengeName, console)
+        return scoreAttackRepository.findAllByChallengeNameAndConsoleAndVerifiedIsTrueAndRemovedOnIsNullOrderByTotalScoreDesc(challengeName, console)
     }
 
     fun findAllByChallengeAndConsoleNotVerified(challengeName: String, console: Console): List<ScoreAttack> {
-        return scoreAttackRepository.findAllByChallengeNameAndConsoleAndVerifiedIsFalseAndChallengeStageIsNotNullAndRemovedOnIsNullOrderByTotalScoreDesc(challengeName, console)
+        return scoreAttackRepository.findAllByChallengeNameAndConsoleAndVerifiedIsFalseAndRemovedOnIsNullOrderByTotalScoreDesc(challengeName, console)
     }
 
     fun findAllOrdered(): List<ScoreAttack> {

@@ -5,8 +5,11 @@ import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer
 import com.reizu.snaphs.api.entity.Console
 import com.reizu.snaphs.api.entity.Region
 import java.time.LocalDateTime
+import java.util.UUID
 
 data class ScoreAttack(
+
+    val id: UUID,
 
     val userName: String,
 

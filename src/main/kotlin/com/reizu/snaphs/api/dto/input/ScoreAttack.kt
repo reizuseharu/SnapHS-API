@@ -38,6 +38,8 @@ data class ScoreAttack(
     val isVerified: Boolean = false,
 
     @DateTimeFormat(pattern = DateTimeFormatter.DATE_TIME_PATTERN)
-    val approvedOn: LocalDateTime?
+    val approvedOn: LocalDateTime?,
+
+    val notes: String?
 
 )

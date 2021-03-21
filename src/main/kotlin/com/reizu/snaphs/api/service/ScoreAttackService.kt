@@ -48,7 +48,8 @@ class ScoreAttackService {
                 video = video,
                 submittedOn = submittedOn,
                 verified = isVerified,
-                approvedOn = approvedOn
+                approvedOn = approvedOn,
+                notes = notes
             )
             val createdScoreAttack: ScoreAttack = scoreAttackSeekService.create(scoreAttack)
 

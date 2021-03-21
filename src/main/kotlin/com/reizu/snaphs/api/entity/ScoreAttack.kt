@@ -82,6 +82,7 @@ data class ScoreAttack(
     val output: ScoreAttackOutput
         get() {
             return ScoreAttackOutput(
+                id = id,
                 userName = user.name,
                 challengeName = challenge.name,
                 special = special,

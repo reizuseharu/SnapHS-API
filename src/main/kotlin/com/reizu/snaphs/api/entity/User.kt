@@ -19,8 +19,8 @@ data class User(
     @Column(name = "salt", nullable = false)
     val salt: String,
 
-    @Column(name = "country", nullable = false)
-    val country: String,
+    @Column(name = "country", nullable = true)
+    val country: String? = null,
 
     @Column(name = "isAdmin", nullable = false)
     val admin: Boolean = false,

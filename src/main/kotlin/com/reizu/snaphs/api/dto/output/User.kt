@@ -5,7 +5,7 @@ data class User(
 
     val name: String,
 
-    val country: String,
+    val country: String?,
 
     val admin: Boolean
 

@@ -9,7 +9,7 @@ data class User(
 
     val salt: String,
 
-    val country: String,
+    val country: String? = null,
 
     val isAdmin: Boolean = false
 

@@ -224,3 +224,15 @@ VALUES
   ('efa648a3-f8a1-4fc6-976a-685b171ef5cf', 'Dragonite', '74260189-8f75-4f9f-a669-86a9e91ea7ec', NULL),
   ('c120cb68-ad87-4fbb-b259-2fd300b78db0', 'Mew', 'fb284958-0024-4363-8f9c-ef3ba355b89e', NULL);
 
+INSERT INTO
+  "User" (
+    "id",
+    "name",
+    "country",
+    "hashedPassword",
+    "salt",
+    "isAdmin"
+  )
+VALUES
+  ('96f88dce-1f9d-4d01-ad21-397885ede347', 'reizu', 'USA', '', '', true);
+

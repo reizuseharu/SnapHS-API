@@ -38,6 +38,8 @@ data class ScoreAttack(
     val isVerified: Boolean = false,
 
     @JsonSerialize(using = LocalDateTimeSerializer::class)
-    val approvedOn: LocalDateTime?
+    val approvedOn: LocalDateTime?,
+
+    val notes: String?
 
 )

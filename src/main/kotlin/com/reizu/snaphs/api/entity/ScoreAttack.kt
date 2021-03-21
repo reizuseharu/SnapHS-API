@@ -72,7 +72,10 @@ data class ScoreAttack(
     @JsonDeserialize(using = LocalDateTimeDeserializer::class)
     @DateTimeFormat(pattern = DateTimeFormatter.DATE_TIME_PATTERN)
     @Column(name = "approvedOn", nullable = true)
-    val approvedOn: LocalDateTime?
+    val approvedOn: LocalDateTime?,
+
+    @Column(name = "notes", nullable = true)
+    val notes: String?
 
 ) : BaseUniqueEntity() {
 
@@ -93,7 +96,8 @@ data class ScoreAttack(
                 video = video,
                 submittedOn = submittedOn,
                 isVerified = verified,
-                approvedOn = approvedOn
+                approvedOn = approvedOn,
+                notes = notes
             )
         }
 

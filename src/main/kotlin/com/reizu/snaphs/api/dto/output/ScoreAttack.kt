@@ -29,7 +29,7 @@ data class ScoreAttack(
 
     val console: Console,
 
-    val region: Region,
+    val region: Region?,
 
     val proof: String?,
 

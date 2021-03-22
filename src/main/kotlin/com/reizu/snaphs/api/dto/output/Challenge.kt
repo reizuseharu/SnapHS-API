@@ -6,7 +6,7 @@ data class Challenge(
 
     val name: String,
 
-    val pokemonName: String,
+    val pokemonName: String?,
 
     val stage: Stage?
 

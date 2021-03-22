@@ -26,7 +26,7 @@ data class ScoreAttack(
 
     val console: Console,
 
-    val region: Region,
+    val region: Region? = null,
 
     val proof: String?,
 

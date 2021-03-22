@@ -14,8 +14,8 @@ data class Challenge(
     val name: String,
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = [CascadeType.REMOVE])
-    @JoinColumn(name = "pokemonId", referencedColumnName = "id", nullable = false)
-    val pokemon: Pokemon,
+    @JoinColumn(name = "pokemonId", referencedColumnName = "id", nullable = true)
+    val pokemon: Pokemon?,
 
     @Enumerated(EnumType.STRING)
     @Column(name = "stage", nullable = true)
@@ -27,7 +27,7 @@ data class Challenge(
         get() {
             return ChallengeOutput(
                 name = name,
-                pokemonName = pokemon.name,
+                pokemonName = pokemon?.name,
                 stage = stage
             )
         }

@@ -48,8 +48,8 @@ data class ScoreAttack(
     val console: Console,
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "region", nullable = false)
-    val region: Region,
+    @Column(name = "region", nullable = true)
+    val region: Region?,
 
     @Column(name = "proof", nullable = true, columnDefinition = "TEXT")
     val proof: String?,

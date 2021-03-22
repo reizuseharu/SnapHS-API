@@ -222,7 +222,19 @@ VALUES
   ('fb6da799-226d-41d6-bf2f-0b2e1dc692a3', 'Moltres', '57bfd192-db28-460e-8f96-89e102cfcbfa', NULL),
   ('d053fb7d-73ae-484d-942c-2beb40a96494', 'Dratini', 'ea5482f3-56df-4330-ae94-26bd33ac1771', NULL),
   ('efa648a3-f8a1-4fc6-976a-685b171ef5cf', 'Dragonite', '74260189-8f75-4f9f-a669-86a9e91ea7ec', NULL),
-  ('c120cb68-ad87-4fbb-b259-2fd300b78db0', 'Mew', 'fb284958-0024-4363-8f9c-ef3ba355b89e', NULL);
+  ('c120cb68-ad87-4fbb-b259-2fd300b78db0', 'Mew', 'fb284958-0024-4363-8f9c-ef3ba355b89e', NULL),
+  ('23dafae3-e364-4691-8701-c154c899aaea', 'Beach', NULL, NULL),
+  ('fb8b4654-9395-45f3-914e-18e374d6091a', 'Tunnel', NULL, NULL),
+  ('a346e6ae-2614-4e83-88e9-3f5bd4c28a20', 'Volcano', NULL, NULL),
+  ('5f39a18a-8feb-4d6f-8b3e-0b38f35b9cd1', 'River', NULL, NULL),
+  ('02faf325-480c-4e3f-8e21-b5387127a147', 'Cave', NULL, NULL),
+  ('6f5553a1-3f9f-4dd9-a9b8-ed204135c60e', 'Valley', NULL, NULL),
+  ('371594a0-c008-41e2-b894-bdb64d1f2dc8', 'Rainbow Cloud', NULL, NULL),
+  ('b73c0e79-5403-49fe-b985-a6a8e2f34ebd', 'Highest Score', NULL, NULL),
+  ('a2a6ddd9-b6ba-4b46-adc0-49252d071031', 'Lowest Score', NULL, NULL),
+  ('741936f1-46c6-456f-8117-bc9dbe6f10a2', 'Highest Score • 1 hour', NULL, NULL),
+  ('1e7fee26-b994-4ffe-b5b0-5518d33de28b', 'Highest Score • 2 hours', NULL, NULL),
+  ('0a2d0176-cceb-4f57-a0ba-e2ebf4c994b3', 'Highest Score • 3 hours', NULL, NULL);
 
 INSERT INTO
   "User" (

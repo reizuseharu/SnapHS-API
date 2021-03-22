@@ -21,7 +21,7 @@ class ChallengeService {
 
     fun create(challengeInput: ChallengeInput): ChallengeOutput {
         return challengeInput.run {
-            val pokemon: Pokemon = pokemonSeekService.findByName(pokemonName)
+            val pokemon: Pokemon? = pokemonName?.let { pokemonSeekService.findByName(pokemonName) }
 
             val challenge = Challenge(
                 name = name,

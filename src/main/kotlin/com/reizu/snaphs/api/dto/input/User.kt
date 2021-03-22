@@ -7,8 +7,6 @@ data class User(
 
     val password: String,
 
-    val salt: String,
-
     val country: String? = null,
 
     val isAdmin: Boolean = false

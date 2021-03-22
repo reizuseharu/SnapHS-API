@@ -13,7 +13,6 @@ import com.reizu.snaphs.api.dto.output.ScoreAttack as ScoreAttackOutput
 import com.reizu.snaphs.api.dto.update.ScoreAttack as ScoreAttackUpdate
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
-import java.nio.charset.StandardCharsets
 import java.security.MessageDigest
 
 @Service
@@ -44,8 +43,7 @@ class ScoreAttackService {
                 totalScore = totalScore,
                 console = console,
                 region = region,
-                picture = picture,
-                video = video,
+                proof = proof,
                 submittedOn = submittedOn,
                 verified = isVerified,
                 approvedOn = approvedOn,
@@ -152,9 +150,9 @@ class ScoreAttackService {
         // - Move into Verify Service
         user.run {
             val messageDigest = MessageDigest.getInstance("SHA-512")
-            messageDigest.update(user.salt.toByteArray())
-            val inputHashedPassword = messageDigest.digest(password.toByteArray(StandardCharsets.UTF_8))
-            val storedHashedPassword = user.hashedPassword.toByteArray()
+            messageDigest.update(salt.fromHexToByteArray())
+            val inputHashedPassword = messageDigest.digest(password.toByteArray())
+            val storedHashedPassword = hashedPassword.fromHexToByteArray()
 
             if (!inputHashedPassword.contentEquals(storedHashedPassword)) {
                 throw RuntimeException("Incorrect password")

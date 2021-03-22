@@ -31,9 +31,7 @@ data class ScoreAttack(
 
     val region: Region,
 
-    val picture: String?,
-
-    val video: String?,
+    val proof: String?,
 
     @JsonSerialize(using = LocalDateTimeSerializer::class)
     val submittedOn: LocalDateTime,

@@ -51,13 +51,8 @@ data class ScoreAttack(
     @Column(name = "region", nullable = false)
     val region: Region,
 
-    @Column(name = "picture", nullable = true)
-    val picture: String?,
-
-    // - Add pictureUrl
-    // - Change to videoUrl
-    @Column(name = "video", nullable = true)
-    val video: String?,
+    @Column(name = "proof", nullable = true)
+    val proof: String?,
 
     @JsonSerialize(using = LocalDateTimeSerializer::class)
     @JsonDeserialize(using = LocalDateTimeDeserializer::class)
@@ -93,8 +88,7 @@ data class ScoreAttack(
                 totalScore = totalScore,
                 console = console,
                 region = region,
-                picture = picture,
-                video = video,
+                proof = proof,
                 submittedOn = submittedOn,
                 isVerified = verified,
                 approvedOn = approvedOn,

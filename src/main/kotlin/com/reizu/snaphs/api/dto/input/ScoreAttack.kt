@@ -28,9 +28,7 @@ data class ScoreAttack(
 
     val region: Region,
 
-    val picture: String?,
-
-    val video: String?,
+    val proof: String?,
 
     @DateTimeFormat(pattern = DateTimeFormatter.DATE_TIME_PATTERN)
     val submittedOn: LocalDateTime = LocalDateTime.now(),

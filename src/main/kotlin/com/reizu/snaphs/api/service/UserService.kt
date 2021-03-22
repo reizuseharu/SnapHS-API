@@ -6,7 +6,6 @@ import com.reizu.snaphs.api.dto.input.User as UserInput
 import com.reizu.snaphs.api.dto.output.User as UserOutput
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
-import java.nio.charset.StandardCharsets
 import java.security.MessageDigest
 import java.security.SecureRandom
 
@@ -25,11 +24,11 @@ class UserService {
         messageDigest.update(salt)
 
         return userInput.run {
-            val hashedPassword = messageDigest.digest(password.toByteArray(StandardCharsets.UTF_8))
+            val hashedPassword = messageDigest.digest(password.toByteArray())
             val user = User(
                 name = name,
-                hashedPassword = hashedPassword.toString(),
-                salt = salt.toString(),
+                hashedPassword = hashedPassword.toHex(),
+                salt = salt.toHex(),
                 country = country,
                 admin = isAdmin
             )
@@ -53,3 +52,6 @@ class UserService {
     }
 
 }
+
+fun ByteArray.toHex() = this.joinToString(separator = "") { it.toInt().and(0xff).toString(16).padStart(2, '0') }
+fun String.fromHexToByteArray() = ByteArray(this.length / 2) { this.substring(it * 2, it * 2 + 2).toInt(16).toByte() }

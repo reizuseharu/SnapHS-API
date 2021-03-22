@@ -234,5 +234,6 @@ INSERT INTO
     "isAdmin"
   )
 VALUES
-  ('96f88dce-1f9d-4d01-ad21-397885ede347', 'reizu', 'USA', '', '', true);
+  ('96f88dce-1f9d-4d01-ad21-397885ede347', 'reizu', 'USA', '', '', true),
+  ('d380754c-413b-4d6c-ade7-8e3b4d729987', 'reizuAdmin', 'USA', '7371dcf3cb8889310cfe24714764b77492597f53313c0877b5e37146dd1fcc76f47e61d41f360ddba18ef91a855010c0080b573223f71a5a4c6c44193f6be4d7', '0d4661ebaa7eead11b642cd197456d4c', true);
 

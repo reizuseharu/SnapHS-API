@@ -14,6 +14,7 @@ import com.reizu.snaphs.api.dto.update.ScoreAttack as ScoreAttackUpdate
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 import java.security.MessageDigest
+import java.time.LocalDateTime
 
 @Service
 class ScoreAttackService {
@@ -139,8 +140,21 @@ class ScoreAttackService {
             val modifiedScoreAttack = scoreAttack.copy(verified = true)
 
             scoreAttackSeekService.create(modifiedScoreAttack)
+            scoreAttackSeekService.remove(id)
 
             modifiedScoreAttack.output
+        }
+    }
+
+    fun invalidateScoreAttack(scoreAttackUpdate: ScoreAttackUpdate): ScoreAttackOutput {
+        return scoreAttackUpdate.run {
+            validateUser(userName, password)
+
+            val scoreAttack: ScoreAttack = scoreAttackSeekService.findById(id)
+
+            scoreAttackSeekService.remove(id)
+
+            scoreAttack.output
         }
     }
 

@@ -100,4 +100,9 @@ class ScoreAttackController {
         return scoreAttackService.validateScoreAttack(scoreAttackUpdate)
     }
 
+    @PutMapping(path = ["/invalidate"], produces = [MediaType.APPLICATION_JSON_VALUE], consumes = [MediaType.APPLICATION_JSON_VALUE])
+    fun invalidateScoreAttack(@RequestBody scoreAttackUpdate: ScoreAttackUpdate): ScoreAttackOutput {
+        return scoreAttackService.invalidateScoreAttack(scoreAttackUpdate)
+    }
+
 }

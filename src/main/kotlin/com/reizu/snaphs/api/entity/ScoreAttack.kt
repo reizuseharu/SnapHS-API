@@ -51,7 +51,7 @@ data class ScoreAttack(
     @Column(name = "region", nullable = false)
     val region: Region,
 
-    @Column(name = "proof", nullable = true)
+    @Column(name = "proof", nullable = true, columnDefinition = "TEXT")
     val proof: String?,
 
     @JsonSerialize(using = LocalDateTimeSerializer::class)

@@ -24,3 +24,17 @@ Pokémon Snap High Score API
 ```bash
 ./ngrok http -region=us -hostname=hs-pkmnsnap.ngrok.io 8089 > /dev/null & 
 ```
+
+## Backup and Restore
+
+### Backup
+
+```bash
+pg_dump -h localhost -U postgres snaphs > snaphs-dump.sql
+```
+
+### Restore
+
+```bash
+psql -h localhost -U postgres snaphs < snaphs-dump.sql
+```
